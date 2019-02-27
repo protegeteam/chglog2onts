@@ -39,7 +39,8 @@ public class ChangeLogProcessor {
             var changes = revisionDetails.getChanges();
             for(Change change : changes) {
                 if(change.getAxiom().isPresent()) {
-                    var ax = parserFactory.create().parseAxiom(change.getAxiom().get());
+                    String axiom = change.getAxiom().get();
+                    var ax = parserFactory.create().parseAxiom(axiom);
                     if(change.getOperation() == ChangeOperation.ADD) {
                         handler.addAxiom(ax);
                     }
